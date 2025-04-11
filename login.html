@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+
+    <form id="loginForm">
+      <input type="text" id="loginUser" placeholder="Usuario" required />
+      <input type="password" id="loginPass" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p>¿No tienes cuenta? <a href="register.html">Regístrate aquí</a></p>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    const loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const user = document.getElementById("loginUser").value.trim();
+      const pass = document.getElementById("loginPass").value;
+
+      if (Auth.login(user, pass)) {
+        window.location.href = "index.html";
+      }
+    });
+  </script>
+</body>
+</html>
